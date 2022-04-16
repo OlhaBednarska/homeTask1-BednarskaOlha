@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class HomeTaskImageTest {
     @Test
@@ -18,7 +19,7 @@ public class HomeTaskImageTest {
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("https://google.com/");
         driver.findElement(By.name("q")).sendKeys(("la la land" + Keys.ENTER));
         driver.findElement(By.xpath("//div[@class='hdtb-mitem']//a[contains(@href,'isch')]")).click();
